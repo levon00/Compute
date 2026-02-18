@@ -90,7 +90,7 @@ resource "azurerm_linux_virtual_machine" "vm_l" {
   location                        = var.location
   size                            = var.vm_sku
   admin_username                  = var.user_name
-  admin_password                  = var.user_password
+  admin_password                  = var.vm_password
   network_interface_ids           = [azurerm_network_interface.NIC.id]
   disable_password_authentication = false
 
@@ -100,7 +100,7 @@ resource "azurerm_linux_virtual_machine" "vm_l" {
   }
   source_image_reference {
     publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
+    offer     = var.os_version
     sku       = var.os_version
     version   = "latest"
   }
@@ -115,7 +115,7 @@ resource "azurerm_linux_virtual_machine" "vm_l" {
     connection {
       type     = "ssh"
       user     = var.user_name
-      password = var.user_password
+      password = var.vm_password
       host     = azurerm_public_ip.pip.ip_address
     }
   }

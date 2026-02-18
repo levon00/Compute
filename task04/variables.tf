@@ -83,7 +83,7 @@ variable "user_name" {
   description = "This variable is username."
 }
 
-variable "user_password" {
+variable "vm_password" {
   type        = string
   sensitive   = true
   description = "This variable is user password."
