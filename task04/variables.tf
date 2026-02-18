@@ -85,5 +85,6 @@ variable "user_name" {
 
 variable "user_password" {
   type        = string
+  sensitive   = true
   description = "This variable is user password."
 }

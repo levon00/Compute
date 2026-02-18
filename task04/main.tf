@@ -85,13 +85,14 @@ resource "azurerm_network_interface_security_group_association" "nic_ass" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm_l" {
-  name                  = var.vm_name
-  resource_group_name   = azurerm_resource_group.rg.name
-  location              = var.location
-  size                  = var.vm_sku
-  admin_username        = var.user_name
-  admin_password        = var.user_password
-  network_interface_ids = [azurerm_network_interface.NIC.id]
+  name                            = var.vm_name
+  resource_group_name             = azurerm_resource_group.rg.name
+  location                        = var.location
+  size                            = var.vm_sku
+  admin_username                  = var.user_name
+  admin_password                  = var.user_password
+  network_interface_ids           = [azurerm_network_interface.NIC.id]
+  disable_password_authentication = false
 
   os_disk {
     caching              = "ReadWrite"
