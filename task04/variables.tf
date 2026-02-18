@@ -88,3 +88,8 @@ variable "user_password" {
   sensitive   = true
   description = "This variable is user password."
 }
+
+variable "ipconf_name" {
+  type        = string
+  description = "This variable is ip config name"
+}
