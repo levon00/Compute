@@ -1,6 +1,3 @@
-provider "azurerm" {
-  features {}
-}
 resource "azurerm_resource_group" "rg" {
   name     = var.rg_name
   location = var.location
@@ -100,7 +97,7 @@ resource "azurerm_linux_virtual_machine" "vm_l" {
   }
   source_image_reference {
     publisher = "Canonical"
-    offer     = var.os_version
+    offer     = var.os_offer
     sku       = var.os_version
     version   = "latest"
   }

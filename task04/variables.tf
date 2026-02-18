@@ -73,6 +73,11 @@ variable "os_version" {
   description = "This variable is os verison."
 }
 
+variable "os_offer" {
+  type = string
+  description = "os offer"
+}
+
 variable "user_name" {
   type        = string
   description = "This variable is username."
