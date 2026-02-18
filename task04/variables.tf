@@ -74,7 +74,7 @@ variable "os_version" {
 }
 
 variable "os_offer" {
-  type = string
+  type        = string
   description = "os offer"
 }
 
