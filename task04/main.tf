@@ -23,6 +23,7 @@ resource "azurerm_public_ip" "pip" {
   location            = var.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
+  sku                 = "Standard"
   tags                = var.tags
   domain_name_label   = var.domain_name
 }
@@ -97,12 +98,17 @@ resource "azurerm_linux_virtual_machine" "vm_l" {
   }
   source_image_reference {
     publisher = "Canonical"
-    offer     = var.os_offer
-    sku       = var.os_version
+    offer     = var.os_version
+    sku       = "server"
     version   = "latest"
   }
+  depends_on = [
+    azurerm_network_interface_security_group_association.nic_ass
+  ]
+
   provisioner "remote-exec" {
     inline = [
+      "while fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do echo 'Waiting for apt lock...'; sleep 5; done",
       "sudo apt update -y >/dev/null 2>&1",
       "sudo apt install -y nginx >/dev/null 2>&1",
       "sudo systemctl enable nginx >/dev/null 2>&1",
