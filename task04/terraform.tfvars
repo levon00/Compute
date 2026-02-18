@@ -5,7 +5,6 @@ Vnet_name              = "cmaz-0sj5vwga-mod4-vnet"
 subnet_name            = "frontend"
 Vnet_address           = ["10.0.0.0/16"]
 subnet_address         = ["10.0.1.0/24"]
-unknown_variable       = "*"
 public_ip_name         = "cmaz-0sj5vwga-mod4-pip"
 nsg_name               = "cmaz-0sj5vwga-mod4-nsg"
 nsg_rule_name          = ["AllowHTTP", "AllowSSH"]

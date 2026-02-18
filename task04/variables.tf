@@ -48,11 +48,6 @@ variable "nsg_rule_name" {
   description = "This variable is the name of nsg rule"
 }
 
-variable "unknown_variable" {
-  type        = string
-  description = "This variable is the unknown variable"
-}
-
 variable "network_interface_name" {
   type        = string
   description = "This variable is the name of NIC."
